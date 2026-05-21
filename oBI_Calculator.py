@@ -44,8 +44,8 @@ st.info(f"📐 **Total burn area (second + third degree): {total_tbsa:.1f}% TBSA
 otbsa = calculate_otbsa(age, total_tbsa)
 st.markdown(
     f"""
-    <div style="background-color: "#F8D4A0; padding: 8px 12px; border-radius: 5px; margin-bottom: 10px;">
-        <div style="font-size: 16px; font-weight: bold; color: #000000;">
+    <div style="background-color: #F8D4A0; padding: 12px 16px; border-radius: 6px; margin-bottom: 10px; width: 100%;">
+        <div style="font-size: 16px; font-weight: bold; color: #C86920;">
             🔥 oTBSA (age‑weighted): {otbsa:.1f}%
         </div>
     </div>
