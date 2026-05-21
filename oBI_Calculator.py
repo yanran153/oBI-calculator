@@ -43,16 +43,16 @@ if st.button("Calculate Risk"):
     # Risk Stratification
     if oBI < 7.52:
         risk_level = "Low Risk"
-        color_hex = "#F28B9F"
+        color_hex =  "#FDF5F7"
     elif oBI < 10.16:
         risk_level = "Moderate Risk"
-        color_hex = "#E85970"
+        color_hex = "#E8A0AD"
     else:
         risk_level = "High Risk"
         color_hex = "#91072F"
     
     # ---------------------- Result Output ----------------------
-    st.header("Calculation Results")
+    st.header("📊 Calculation Results")
     
     # oBI
     st.metric(label="oBI Score", value=f"{oBI:.2f}")
@@ -64,3 +64,25 @@ if st.button("Calculate Risk"):
     st.markdown(f'<h3>Risk Level: <span style="color:{color_hex}">{risk_level}</span></h3>',unsafe_allow_html=True)
     st.markdown("---")
     st.caption("Note: This is a research tool for clinical reference. Individual patient assessment should consider all available clinical information.")
+    
+    # ===================== Risk Interval =====================
+    st.markdown("---")
+    st.subheader("📏 oBI Risk Interval")
+    
+    # Interval and Location
+    st.markdown(f"""
+    <div style="font-size:18px; font-weight:bold; margin-bottom:10px;">
+        0 &nbsp;&nbsp; – &nbsp;&nbsp; 7.52 &nbsp;&nbsp; – &nbsp;&nbsp; 10.16 &nbsp;&nbsp; – &nbsp;&nbsp; ∞
+    </div>
+    <div style="font-size:16px; color:#555;">
+        Low &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Moderate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; High
+    </div>
+    <div style="font-size:17px; font-weight:bold; color:{color}; margin-top:8px;">
+        Current patient: {position}
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # =================================================================
+
+    st.markdown("---")
+    st.caption("Note: This is a research tool for clinical reference.")
