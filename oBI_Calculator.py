@@ -1,4 +1,5 @@
 import streamlit as st
+import math
 
 # -------------------------- Helper functions --------------------------
 def delta_age(age):
@@ -35,11 +36,22 @@ age = st.number_input("Age (years)", min_value=18, max_value=120, value=65, step
 second_degree = st.number_input("Second-degree burn area (% TBSA)", min_value=0.0, max_value=100.0, value=10.0, step=0.5)
 third_degree = st.number_input("Third-degree burn area (% TBSA)", min_value=0.0, max_value=100.0, value=10.0, step=0.5)
 
-# Real-time display of total TBSA and oTBSA
+# Total TBSA (original info box)
 total_tbsa = second_degree + third_degree
+st.info(f"📐 **Total burn area (second + third degree): {total_tbsa:.1f}% TBSA**")
+
+# oTBSA (apricot custom box)
 otbsa = calculate_otbsa(age, total_tbsa)
-st.info(f"📐 **Total burn area (second + third degree): {total_tbsa:.1f}% TBSA**  |  "
-        f"**o TBSA (age-weighted): {otbsa:.1f}%**")
+st.markdown(
+    f"""
+    <div style="background-color: #F0A827; padding: 8px 12px; border-radius: 5px; margin-bottom: 10px;">
+        <div style="font-size: 16px; font-weight: bold; color: #000000;">
+            🔥 oTBSA (age‑weighted): {otbsa:.1f}%
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 # -------------------------- Calculation and results --------------------------
 if st.button("Calculate Risk"):
