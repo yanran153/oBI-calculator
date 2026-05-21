@@ -46,10 +46,10 @@ if st.button("Calculate Risk"):
         color_hex = = "#FDF5F7"
     elif oBI < 10.16:
         risk_level = "Moderate Risk"
-        color_hex = = "#E8A0AD"
+        color_hex = "#E8A0AD"
     else:
         risk_level = "High Risk"
-        color_hex = = "#91072F"
+        color_hex = "#91072F"
     
     # ---------------------- Result Output ----------------------
     st.header("📊 Calculation Results")
