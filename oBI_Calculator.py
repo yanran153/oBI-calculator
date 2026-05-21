@@ -43,7 +43,7 @@ if st.button("Calculate Risk"):
     # Risk Stratification
     if oBI < 7.52:
         risk_level = "Low Risk"
-        color_hex = = "#FDF5F7"
+        color_hex = "#FDF5F7"
     elif oBI < 10.16:
         risk_level = "Moderate Risk"
         color_hex = "#E8A0AD"
