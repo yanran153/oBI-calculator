@@ -43,13 +43,13 @@ if st.button("Calculate Risk"):
     # Risk Stratification
     if oBI < 7.52:
         risk_level = "Low Risk"
-        color = "#FDF5F7"
+        color_hex = = "#FDF5F7"
     elif oBI < 10.16:
         risk_level = "Moderate Risk"
-        color = "#E8A0AD"
+        color_hex = = "#E8A0AD"
     else:
         risk_level = "High Risk"
-        color = "#91072F"
+        color_hex = = "#91072F"
     
     # ---------------------- Result Output ----------------------
     st.header("📊 Calculation Results")
@@ -61,6 +61,6 @@ if st.button("Calculate Risk"):
     st.metric(label="Estimated In-hospital Mortality Probability", value=f"{mortality_prob:.1%}")
     
     # Risk Stratificaiton
-    st.markdown(f"### Risk Level: :{color}[{risk_level}]")
+    st.markdown(f'<h3>Risk Level: <span style="color:{color_hex}">{risk_level}</span></h3>',unsafe_allow_html=True)
     st.markdown("---")
     st.caption("Note: This is a research tool for clinical reference. Individual patient assessment should consider all available clinical information.")
