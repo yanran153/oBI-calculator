@@ -26,8 +26,8 @@ def calculate_otbsa(age, total_tbsa):
     return total_tbsa * weight
 
 # -------------------------- Page config --------------------------
-st.set_page_config(page_title="oBI Risk Calculator", page_icon="🔥")
-st.title("Older adult Burn Index (oBI) Risk Calculator")
+st.set_page_config(page_title="oBI Risk and oTBSA Calculator", page_icon="🔥")
+st.title("Older Adult Targeted Dual-tool Risk Assessment Strategy Calculator")
 st.markdown("This tool is intended for clinical reference only and does not constitute medical advice.")
 
 # -------------------------- Input section --------------------------
@@ -44,7 +44,7 @@ st.info(f"📐 **Total burn area (second + third degree): {total_tbsa:.1f}% TBSA
 otbsa = calculate_otbsa(age, total_tbsa)
 st.markdown(
     f"""
-    <div style="background-color: #F0A827; padding: 8px 12px; border-radius: 5px; margin-bottom: 10px;">
+    <div style="background-color: "#f8d4a0; padding: 8px 12px; border-radius: 5px; margin-bottom: 10px;">
         <div style="font-size: 16px; font-weight: bold; color: #000000;">
             🔥 oTBSA (age‑weighted): {otbsa:.1f}%
         </div>
@@ -64,14 +64,17 @@ if st.button("Calculate Risk"):
         if oBI < 7.52:
             risk_level = "Low Risk"
             color = "#F28B9F"
+            mortality_prob = 0.030
             position_text = "Current patient: Low Risk zone (0 – 7.52)"
         elif oBI < 10.16:
             risk_level = "Moderate Risk"
             color = "#E85970"
+            mortality_prob = 0.312
             position_text = "Current patient: Moderate Risk zone (7.52 – 10.16)"
         else:
             risk_level = "High Risk"
             color = "#91072F"
+            mortality_prob = 0.889
             position_text = "Current patient: High Risk zone (≥ 10.16)"
 
         st.header("📊 Calculation Results")
