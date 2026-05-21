@@ -44,45 +44,41 @@ if st.button("Calculate Risk"):
     if oBI < 7.52:
         risk_level = "Low Risk"
         color_hex =  "#FDF5F7"
+        position_text = "Current patient: Low Risk zone (0 – 7.52)"
     elif oBI < 10.16:
         risk_level = "Moderate Risk"
         color_hex = "#E8A0AD"
+        position_text = "Current patient: Moderate Risk zone (7.52 – 10.16)"
     else:
         risk_level = "High Risk"
         color_hex = "#91072F"
-    
-    # ---------------------- Result Output ----------------------
+        position_text = "Current patient: High Risk zone (≥ 10.16)"
+   
+    # Result Output
     st.header("📊 Calculation Results")
-    
-    # oBI
     st.metric(label="oBI Score", value=f"{oBI:.2f}")
-    
-    # Risk Probability
-    st.metric(label="Estimated In-hospital Mortality Probability", value=f"{mortality_prob:.1%}")
-    
-    # Risk Stratificaiton
-    st.markdown(f'<h3>Risk Level: <span style="color:{color_hex}">{risk_level}</span></h3>',unsafe_allow_html=True)
-    st.markdown("---")
-    st.caption("Note: This is a research tool for clinical reference. Individual patient assessment should consider all available clinical information.")
-    
-    # ===================== Risk Interval =====================
+    st.metric(label="Estimated In-hospital Mortality", value=f"{mortality_prob:.1%}")
+
+    # Risk Stratification
+    st.markdown(
+        f'<h3>Risk Level: <span style="color:{color}; font-weight:bold;">{risk_level}</span></h3>',
+        unsafe_allow_html=True
+    )
+
+    # Risk Interval
     st.markdown("---")
     st.subheader("📏 oBI Risk Interval")
-    
-    # Interval and Location
     st.markdown(f"""
     <div style="font-size:18px; font-weight:bold; margin-bottom:10px;">
         0 &nbsp;&nbsp; – &nbsp;&nbsp; 7.52 &nbsp;&nbsp; – &nbsp;&nbsp; 10.16 &nbsp;&nbsp; – &nbsp;&nbsp; ∞
     </div>
-    <div style="font-size:16px; color:#555;">
-        Low &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Moderate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; High
+    <div style="font-size:16px; color:#555; margin-bottom:10px;">
+        Low &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Moderate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; High
     </div>
-    <div style="font-size:17px; font-weight:bold; color:{color}; margin-top:8px;">
-        Current patient: {position}
+    <div style="font-size:17px; font-weight:bold; color:{color};">
+        {position_text}
     </div>
     """, unsafe_allow_html=True)
-    
-    # =================================================================
 
     st.markdown("---")
-    st.caption("Note: This is a research tool for clinical reference.")
+    st.caption("Note: This is a research tool for clinical reference. Individual patient assessment should consider all available clinical information.")
