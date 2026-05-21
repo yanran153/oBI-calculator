@@ -43,16 +43,16 @@ if st.button("Calculate Risk"):
     # Risk Stratification
     if oBI < 7.52:
         risk_level = "Low Risk"
-        color_hex = "#FDF5F7"
+        color_hex = "#F28B9F"
     elif oBI < 10.16:
         risk_level = "Moderate Risk"
-        color_hex = "#E8A0AD"
+        color_hex = "#E85970"
     else:
         risk_level = "High Risk"
         color_hex = "#91072F"
     
     # ---------------------- Result Output ----------------------
-    st.header("📊 Calculation Results")
+    st.header("Calculation Results")
     
     # oBI
     st.metric(label="oBI Score", value=f"{oBI:.2f}")
