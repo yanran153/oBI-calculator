@@ -23,7 +23,9 @@ def calculate_otbsa(age, total_tbsa):
         weight = 1.80
     else:               # ≥85 years
         weight = 2.00
-    return total_tbsa * weight
+
+    raw_otbsa = total_tbsa * weight
+    return min(raw_otbsa, 100)
 
 # -------------------------- Page config --------------------------
 st.set_page_config(page_title="oBI Risk and oTBSA Calculator", page_icon="🔥")
